@@ -5,25 +5,31 @@
 
 {% block body %}
 <div class="content">
-    <h1>Enter the Task to be done for today:</h1> 
-
+    <h1>Task Manager</h1> 
+    {% if tasks|length < 1 %}
+    <h4> There are no task. Create one below!</h4>
+    {% else %}
     <table>
         <tr>
             <th>Task</th>
             <th>Added</th>
-            <th>Actions</th>
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <a href="Delete">Delete</a>
-                <br>
-                <a href="Update">Update</a>
-            </td>
-        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.content}}</td>
+                <td>{{task.date_created.date()}}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                </td>
+                <td>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
     </table>
-
+    {% endif %}
     <form action="/" method="POST">
         <input type="text" name="content" id="content">
         <input type="submit" value="add task">
