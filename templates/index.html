@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block head %} 
+<title>Task Manager</title> 
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Enter the Task to be done for today:</h1> 
+
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="Delete">Delete</a>
+                <br>
+                <a href="Update">Update</a>
+            </td>
+        </tr>
+    </table>
+
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content">
+        <input type="submit" value="add task">
+    </form>
+</div>
+{% endblock %}
